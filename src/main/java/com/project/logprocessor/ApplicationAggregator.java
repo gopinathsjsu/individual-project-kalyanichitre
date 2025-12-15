@@ -1,10 +1,13 @@
 package com.project.logprocessor;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
 import java.util.*;
 
 public class ApplicationAggregator {
+
+    private static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private final Map<String, Integer> counts = new HashMap<>();
 
@@ -14,7 +17,7 @@ public class ApplicationAggregator {
 
     public void writeJson(String path) {
         try (FileWriter writer = new FileWriter(path)) {
-            writer.write(new Gson().toJson(counts));
+            writer.write(PRETTY_GSON.toJson(counts));
         } catch (Exception e) {}
     }
 }

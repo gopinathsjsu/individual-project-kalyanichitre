@@ -1,10 +1,13 @@
 package com.project.logprocessor;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
 import java.util.*;
 
 public class APMAggregator {
+
+    private static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private final Map<String, List<Double>> metrics = new HashMap<>();
 
@@ -29,7 +32,7 @@ public class APMAggregator {
         }
 
         try (FileWriter writer = new FileWriter(path)) {
-            writer.write(new Gson().toJson(output));
+            writer.write(PRETTY_GSON.toJson(output));
         } catch (Exception e) {}
     }
 }

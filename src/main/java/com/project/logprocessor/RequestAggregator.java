@@ -1,10 +1,13 @@
 package com.project.logprocessor;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.FileWriter;
 import java.util.*;
 
 public class RequestAggregator {
+
+    private static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
 
     private static class Data {
         List<Integer> times = new ArrayList<>();
@@ -46,7 +49,7 @@ public class RequestAggregator {
         }
 
         try (FileWriter writer = new FileWriter(path)) {
-            writer.write(new Gson().toJson(output));
+            writer.write(PRETTY_GSON.toJson(output));
         } catch (Exception e) {}
     }
 
