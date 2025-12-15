@@ -1,0 +1,5 @@
+com\project\logprocessor\APMAggregatorTest.class
+com\project\logprocessor\ApplicationAggregatorTest.class
+com\project\logprocessor\EndToEndIntegrationTest.class
+com\project\logprocessor\LogParserFactoryTest.class
+com\project\logprocessor\RequestAggregatorTest.class
